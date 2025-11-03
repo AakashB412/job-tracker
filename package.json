@@ -1,0 +1,16 @@
+{
+"name": "job-tracker-workspace",
+"private": true,
+"workspaces": ["client", "server"],
+"scripts": {
+"postinstall": "npm --prefix client install && npm --prefix server install",
+"dev": "concurrently \"npm:dev:server\" \"npm:dev:client\"",
+"dev:server": "npm --prefix server run dev",
+"dev:client": "npm --prefix client run dev",
+"build": "npm --prefix server run build && npm --prefix client run build",
+"test": "npm --prefix server test && npm --prefix client test -- --watch=false"
+},
+"devDependencies": {
+"concurrently": "^9.0.1"
+}
+}
